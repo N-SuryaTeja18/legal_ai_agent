@@ -4,6 +4,12 @@ import streamlit as st
 from dotenv import load_dotenv
 from crew import legal_assistant_crew
 
+gemini_key = st.secrets["GEMINI_API_KEY"]
+tavily_key = st.secrets["TAVILY_API_KEY"]
+chunks_path = st.secrets["CHUNKS_JSON_PATH"]
+collection_name = st.secrets["COLLECTION_NAME"]
+persist_dir = st.secrets["PERSIST_DIRECTORY_PATH"]
+
 load_dotenv()
 
 st.set_page_config(page_title="AI Legal Assistant", page_icon="🧠", layout="wide")
