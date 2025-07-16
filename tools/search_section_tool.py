@@ -3,7 +3,7 @@
 import os
 from dotenv import load_dotenv
 from crewai.tools import tool
-from langchain_chroma import Chroma
+from langchain.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
 @tool("Sections Search Tool")
@@ -22,18 +22,14 @@ def search_law_sections(query: str) -> list[dict]:
 
     # Vector DB config
     persist_dir_path = os.getenv("PERSIST_DIRECTORY_PATH")
-    collection_name = os.getenv("COLLECTION_NAME")
+    # collection_name = os.getenv("COLLECTION_NAME")
 
-    if not persist_dir_path or not collection_name:
-        raise EnvironmentError("❌ Missing 'PERSIST_DIRECTORY_PATH' or 'IPC_COLLECTION_NAME' in .env")
+    if not persist_dir_path:
+        raise EnvironmentError("❌ Missing 'PERSIST_DIRECTORY_PATH' in .env")
 
     # Load vector DB
     embedding_function = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    vector_db = Chroma(
-        collection_name=collection_name,
-        persist_directory=persist_dir_path,
-        embedding_function=embedding_function
-    )
+    vector_db = FAISS.load_local(persist_dir_path, embedding_function)
 
     # Create MMR-based retriever
     retriever = vector_db.as_retriever(

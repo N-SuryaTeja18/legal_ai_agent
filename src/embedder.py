@@ -4,7 +4,7 @@ import json
 import os
 from dotenv import load_dotenv
 from langchain_community.docstore.document import Document
-from langchain_chroma import Chroma
+from langchain.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
 def load_chunks_data(file_path: str) -> list[dict]:
@@ -45,13 +45,9 @@ def build_vectordb():
     # initialize embeddings
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 
-    # creating vectorstore
-    Chroma.from_documents(
-        documents = documents,
-        embedding = embeddings,
-        persist_directory = persist_dir_path,
-        collection_name = collection_name
-    )
+    # ✅ Create FAISS vectorstore and save to disk
+    vectordb = FAISS.from_documents(documents, embeddings)
+    vectordb.save_local(persist_dir_path)
 
     print(f"✅ Vectorstore successfully created in collection '{collection_name}' at '{persist_dir_path}'")
 
