@@ -1,3 +1,4 @@
+# Use the latest version of crewai and specify the faiss-cpu extra
 crewai[faiss-cpu]
 crewai-tools
 langchain-community
@@ -7,4 +8,3 @@ sentence-transformers
 python-dotenv
 tavily-python
 streamlit
-faiss-cpu
