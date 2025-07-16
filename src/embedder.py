@@ -4,7 +4,7 @@ import json
 import os
 from dotenv import load_dotenv
 from langchain_community.docstore.document import Document
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
 def load_chunks_data(file_path: str) -> list[dict]:
