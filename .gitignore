@@ -1,0 +1,9 @@
+# Ignore vector store folder
+vector_store/
+
+# Ignore environment variables
+.env
+
+__pycache__/
+
+env/
