@@ -3,10 +3,6 @@
 import streamlit as st
 from dotenv import load_dotenv
 from crew import legal_assistant_crew
-import sys
-import pysqlite3
-sys.modules["sqlite3"] = pysqlite3
-
 
 gemini_key = st.secrets["GEMINI_API_KEY"]
 tavily_key = st.secrets["TAVILY_API_KEY"]

@@ -1,4 +1,4 @@
-crewai
+crewai[faiss-cpu]
 crewai-tools
 langchain-community
 langchain
@@ -8,4 +8,3 @@ python-dotenv
 tavily-python
 streamlit
 faiss-cpu
-pysqlite3
