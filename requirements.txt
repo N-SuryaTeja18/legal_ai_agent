@@ -8,3 +8,4 @@ python-dotenv
 tavily-python
 streamlit
 faiss-cpu
+pysqlite3
