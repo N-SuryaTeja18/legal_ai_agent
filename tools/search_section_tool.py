@@ -3,7 +3,7 @@
 import os
 from dotenv import load_dotenv
 from crewai.tools import tool
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
 @tool("Sections Search Tool")

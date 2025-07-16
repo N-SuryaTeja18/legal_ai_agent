@@ -1,12 +1,11 @@
-# Use the latest version of crewai and specify the faiss-cpu extra
-crewai[faiss-cpu]
+crewai
 crewai-tools
 langchain-community
 langchain
 langchain-huggingface
+langchain-chroma
 sentence-transformers
 python-dotenv
 tavily-python
 streamlit
-chromadb==0.4.24
-tiktoken>=0.9.0
+faiss-cpu
